@@ -1,0 +1,99 @@
+ALGORITHME BatailleNavale
+
+VAR
+    tableau : Tableau[1..5, 1..5] de CARACTERE
+    vie :ENTIER
+    b1c1, b1c2, b1c3, b2c1, b2c2, b2c3, b3c1, b3c2, b4c1, b4c2, tirs_rates, tirs_reussis :CHAINE 
+    tir      :CHAINE 
+
+ 
+procedure initialisation
+
+VAR
+    i, j : ENTIER
+DEBUT
+    POUR j DE 1 A 5 FAIRE
+        POUR i DE 1 A 5 FAIRE
+            Tableau[i,j] <-- 'O'
+        FINPOUR
+    FINPOUR
+FIN
+
+
+procedure affich
+
+VAR
+   i, j : ENTIER
+   
+DEBUT
+    ECRIRE" A B C D E F G H I J"
+    POUR j DE 1 A 5 FAIRE
+        ECRIRE (j)
+        POUR i DE 1 A 5 FAIRE
+            ECRIRE Tableau[i,j]
+        FINPOUR
+        SAUT de ligne
+    FINPOUR
+FIN
+
+procedure tir
+DEBUT
+	ECRIRE "Voici vos tirs rates" + tirs_rates
+	ECRIRE "Voici vos tirs reussis" + tirs_reussis 
+	ECRIRE "Ou voulez-vous tirer ? "
+	LIRE tir
+	SI (tir = b1c1) OU (tir = b1c2) OU (tir = b1c3) OU (tir = b2c1) OU (tir = b2c2) OU (b2c3) OU (tir = b3c1) OU (tir = b3c2) OU (tir = b4c1) OU (tir = b4c2) ALORS
+		ECRIRE "touche"
+		vie <-- vie -1
+		tirs_reussis <-- tirs_reussis + tir
+		SINON 
+			SI (tir <> b1c1) ET (tir <> b1c2) ET (tir <> b1c3) ET (tir <> b2c1) ET (tir <> b2c2) ET (b2c3) ET (tir <> b3c1) ET (tir <> b3c2) ET (tir <> b4c1) ET (tir <> b4c2) ALORS
+				ECRIRE "rate"
+				tirs_rates <-- tirs_rates + tir
+			FINSI
+	FINSI
+FIN
+
+
+DEBUT
+	vie <-- vie + 10
+	tirs_rates <-- " "
+	tirs_reussis <-- " "
+    initialisation
+    affich
+    
+    ECRIRE "J1 placer la case 1 du bateau 1"
+    LIRE b1c1
+
+    ECRIRE "J1 placer la case 2 du bateau 1"
+    LIRE b1c2
+
+    ECRIRE "J1 placer la case 3 du bateau 1"
+    LIRE b1c3
+
+    ECRIRE "J1 placer la case 1 du bateau 2"
+    LIRE b2c1
+
+    ECRIRE "J1 placer la case 2 du bateau 2"
+    LIRE b2c2
+
+    ECRIRE "J1 placer la case 3 du bateau 2"
+    LIRE b2c3
+
+    ECRIRE "J1 placer la case 1 du bateau 3"
+    LIRE b3c1
+
+    ECRIRE "J1 placer la case 2 du bateau 3"
+    LIRE b3c2
+
+    ECRIRE "J1 placer la case 1 du bateau 4"
+    LIRE b4c1
+
+    ECRIRE "J1 placer la case 2 du bateau 4"
+    LIRE b4c2
+
+    TANTQUE vie > 0 FAIRE
+    tir 
+    SI vie = 0 ALORS 
+    	ECRIRE "Vous avez gagné"
+FIN.
